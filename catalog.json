@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "assistants": [
+    {
+      "id": "community.turkish-translator",
+      "pluginId": "community.assistant.turkish-translator",
+      "version": "1.0.0",
+      "name": "Türkçe Çevirmen",
+      "description": "Bağlı metinleri anlamını, üslubunu ve biçimini koruyarak Türkçeye çevirir.",
+      "publisher": "kbingol",
+      "usage": "Canvas'a Türkçe Çevirmen ekle. Bir veya daha fazla Text kartını girişine bağla ve çalıştır. Metni görselden çevirmek için Image kartı da bağlayabilirsin. Sonuç Türkçe metin olarak çıkar; paragraflar, listeler, isimler, sayılar ve anlam korunur. Zaten Türkçe olan metin anlamı değiştirilmeden korunur.",
+      "packageUrl": "https://github.com/kbingol/canvas-assistants/releases/download/community.turkish-translator-v1.0.0/community.turkish-translator-1.0.0.flowast",
+      "sha256": "601cade26c3622e0a8beec1eb8694d49d09594f82e5e811bdb5c4423df6070f0",
+      "packageBytes": 2987,
+      "requiredTools": [
+        "read_skill",
+        "inspect_image"
+      ]
+    }
+  ]
+}
