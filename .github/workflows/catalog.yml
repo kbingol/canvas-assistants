@@ -1,0 +1,46 @@
+name: Validate and publish assistant catalog
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths-ignore: [catalog.json]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalog-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/build_catalog.py
+
+  publish:
+    if: github.repository == 'kbingol/canvas-assistants' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Publish immutable packages, then catalog
+        run: python scripts/publish_catalog.py
+        env:
+          GH_TOKEN: ${{ github.token }}

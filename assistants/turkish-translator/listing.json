@@ -1,0 +1,4 @@
+{
+  "publisher": "kbingol",
+  "usage": "Canvas'a Türkçe Çevirmen ekle. Bir veya daha fazla Text kartını girişine bağla ve çalıştır. Metni görselden çevirmek için Image kartı da bağlayabilirsin. Sonuç Türkçe metin olarak çıkar; paragraflar, listeler, isimler, sayılar ve anlam korunur. Zaten Türkçe olan metin anlamı değiştirilmeden korunur."
+}
